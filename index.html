@@ -19,15 +19,46 @@
             
             var _doc = window.document;
 
-            function init () {
-                    addImageSlots();
-            }
+            var _numOfImageSlots = 26,
+					_numOfImagesPerRow = 5,
+					_imageMarginBottom = 30;
 
-            function addImageSlots () {
+			var _imageAspectWidth = 1920,
+					_imageAspectHeight = 1080;
 
-            }
-        })();
+			function init () {
 
-    </script>
+				addImageSlots();
+
+			}
+
+			function addImageSlots () {
+
+				var i = 0,
+						len = _numOfImageSlots,
+						item;
+
+				var wrap = _doc.getElementById('dragDrop');
+
+				for ( ; i < len; i++ ) {
+
+					item = _doc.createElement('div');
+
+					item.setAttribute('class', 'dd-slot');
+					item.setAttribute('style', 'width:' + ( 100 / _numOfImagesPerRow ) + '%;padding-bottom:' + ( ( 100 / _numOfImagesPerRow ) * ( _imageAspectHeight / _imageAspectWidth ) ) + '%;margin-bottom:' + _imageMarginBottom + 'px;');
+
+					item.innerHTML = '<p class="dd-slot-num dd-vc">' + ( i + 1 ) + '</p>';
+
+					wrap.appendChild(item);
+
+				}
+
+			}
+
+			init();
+
+		})();
+
+	</script>
 </body>
 </html>
